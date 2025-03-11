@@ -62,7 +62,7 @@
         
         <label for="date">Select Date:</label>
         <div class="input-group date" id="datepicker">
-        <input type="text" class="form-control" placeholder="Select a date">
+        <input type="text" id="selected-date"class="form-control" placeholder="Select a date" readonly>
         <div class="input-group-append">
             <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
         </div>
@@ -78,14 +78,13 @@
         </div>
 
     <script>
-            
             $(document).ready(function() {
             $("#datepicker").datepicker({
                 format: "yyyy-mm-dd",
                 autoclose: true,
                 todayHighlight: true
         }).on("changeDate", function(e) {
-             $("#selected-date").val(e.format());
+             $("#selected-date").val(e.format("yyyy-mm-dd"));
         });
     });
 
