@@ -94,6 +94,10 @@
                 let selectDate = document.getElementById('selected-date').value;
                 let time = document.getElementById('time').value;
 
+            console.log("Location:", location);
+            console.log("Selected Date:", selectedDate);
+            console.log("Time:", time);
+            
             if(!date || !time){
                 alert('Please select valid date and time.');
                 return;
