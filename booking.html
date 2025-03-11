@@ -81,21 +81,21 @@
             
             $(document).ready(function() {
             $("#datepicker").datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true,
-            todayHighlight: true
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: true
         }).on("changeDate", function(e) {
-             $("#datepicker input").val(e.format());
+             $("#selected-date").val(e.format());
         });
     });
 
             function bookSlot() {
-                const location = document.getElementById('location').value;
-                let selectDate = $("#datepicker input").val():
-                const time = document.getElementById('time').value;
+                let location = document.getElementById('location').value;
+                let selectDate = document.getElementById('selected-date').value;
+                let time = document.getElementById('time').value;
 
             if(!date || !time){
-                alert('Please select valid and date and time.');
+                alert('Please select valid date and time.');
                 return;
             }
 
