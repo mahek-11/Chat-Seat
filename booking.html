@@ -56,23 +56,27 @@
             <option value="Prospect_Library">Prospect Library</option>
         </select>
         
-        <label for="date"> Select Date: </label>
-        <input type="text" id="date" placeholder="Pick a date">
+        <label for="date">Select Date:</label>
+        <input type="text" id="date" class="form-control">
 
         <label for="time"> Select Time:</label>
         <input type="time" id="time" min="09:00" max="16:00" step="3600">
 
             <button onclick="bookSlot()">Book Slot</button>
             <br>
-            <a href="index.html">⬅ Back to Home</a>
+            <a href="index.html">Back to Home</a>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
         <script>
             
-            flatpickr("#date", {
-                enableTime: false,
-                dateFormat: "Y-m-d",
+            $(document).ready(function() {
+            $("#date").datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+                });
             });
 
             function bookSlot() {
