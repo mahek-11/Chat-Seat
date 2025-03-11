@@ -6,11 +6,12 @@
     <title>Book a Slot</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     
     <style>
+        body{
+            font-family:Arial, sans-serif;
+            background-color:#f8f9fa;
+        }
         .container {
             background:rgba(255, 255, 255, 0.9);
             padding:30px;
@@ -43,6 +44,16 @@
             color:#333;
             font-weight:bold;
         }
+        .success-message{
+            display:none;
+            color:green;
+            font-weight:bold;
+            margin-top:10px;
+        }
+        #book-slot:focus+.success-message{
+            display:block;
+        }
+        
     </style>
 </head>
 <body>
@@ -50,52 +61,28 @@
         <h2> Book your Slot</h2>
         <p> Please select place and time: </p>
 
-        <label for="location">Select Place:</label>
-        <select id="location">
-            <option value="Tea_Tree_Plaza">Tea Tree Plaza</option>
-            <option value="Campbelltown_Library">Campbelltown Library</option>
-            <option value="Rundle_Mall">Rundle Mall</option>
-            <option value="Burnside">Burnside</option>
-            <option value="Greenacres_Library">Greenacres Library</option>
-            <option value="Prospect_Library">Prospect Library</option>
+        <form>
+            <label for="location">Select Place:</label>
+            <select id="location" name="Location" requuired>
+                <option value="Tea_Tree_Plaza">Tea Tree Plaza</option>
+                <option value="Campbelltown_Library">Campbelltown Library</option>
+                <option value="Rundle_Mall">Rundle Mall</option>
+                <option value="Burnside">Burnside</option>
+                <option value="Greenacres_Library">Greenacres Library</option>
+                <option value="Prospect_Library">Prospect Library</option>
         </select>
         
        <label for="date"> Select Date: </label>
-        <input type="text" id="date" placeholder="Pick a date">
+        <input type="date" id="date" name="date" required>
 
         <label for="time"> Select Time:</label>
-        <input type="time" id="time" min="09:00" max="16:00" step="3600">
+        <input type="time" id="time" min="09:00" max="16:00" step="3600" required>
 
-            <button onclick="bookSlot()">Book Slot</button>
-            <br>
-            <a href="index.html">Back to Home</a>
-    </div>
+        <button type="button" id="book-slot">Book Slot</button>
+        <div class="success-message">Slot booked successfully</div>
+        </form>
     
-    <script>
-            $(document).ready(function() {
-            $("#datepicker").datepicker({
-                format: "yyyy-mm-dd",
-                autoclose: true,
-                todayHighlight: true
-        }).on("changeDate", function(e) {
-             $("#selected-date").val(e.format("yyyy-mm-dd"));
-        });
-    });
-
-            function bookSlot() {
-                let location = document.getElementById('location').value;
-                let selectDate = document.getElementById('selected-date').value;
-                let time = document.getElementById('time').value;
-
-            if(!date || !time){
-                alert('Please select valid date and time.');
-                return;
-            }
-
-            alert(`Slot booked at ${location} on ${date} from ${time} to ${parseInt(time.split(':')[0]) + 1}:00`);
-            }   
-
-        </script>
-
-    </div>
+       <br>     <a href="index.html">Back to Home</a>
+         </br>
 </body>
+</html>
