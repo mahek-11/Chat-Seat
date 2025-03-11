@@ -85,13 +85,13 @@
             autoclose: true,
             todayHighlight: true
         }).on("changeDate", function(e) {
-            $(this).datepicker("hide"); 
+             $("#datepicker input").val(e.format());
         });
     });
 
             function bookSlot() {
                 const location = document.getElementById('location').value;
-                const date = document.getElementById('date').value;
+                let selectDate = $("#datepicker input").val():
                 const time = document.getElementById('time').value;
 
             if(!date || !time){
