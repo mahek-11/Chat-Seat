@@ -27,12 +27,17 @@
             color:black;
             margin-top:5px;
         }
-        .button-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap:15px;
-            margin-top:20px;
-            margin-width:800px;
+        .button-container a {
+            display: block;
+            text-decoration: none; 
+            padding: 15px;
+            text-align: center;
+            border: 2px solid black;
+            background-color: #FFFFFF;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: 0.3s;
+            width: 250px;
 }
     .btn-container a:nth-child(4),
         .btn-container a:nth-child(5){
@@ -55,10 +60,13 @@
         background-color:black;
         color:white;
     }
-    @media (max-width: 600px) {
-    .button-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+   .button-container {
+    border: 2px solid red; /* Add border to see container size */
+}
+.button-container a {
+    border: 2px solid blue; /* Add border to each button */
+}
+
 }
     
     </style>
