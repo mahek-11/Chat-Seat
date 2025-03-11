@@ -61,9 +61,13 @@
         </select>
         
         <label for="date">Select Date:</label>
-        <div id="datepicker-container">
-            <div id="datepicker"></div>
+        <div class="input-group date" id="datepicker">
+        <input type="text" class="form-control" placeholder="Select a date">
+        <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
         </div>
+    </div>
+
 
         <label for="time"> Select Time:</label>
         <input type="time" id="time" min="09:00" max="16:00" step="3600">
@@ -73,18 +77,17 @@
             <a href="index.html">Back to Home</a>
         </div>
 
-        
-
-        
-        <script>
+    <script>
             
             $(document).ready(function() {
             $("#datepicker").datepicker({
             format: "yyyy-mm-dd",
             autoclose: true,
-            todayHighlight:true
-                });
-            });
+            todayHighlight: true
+        }).on("changeDate", function(e) {
+            $(this).datepicker("hide"); 
+        });
+    });
 
             function bookSlot() {
                 const location = document.getElementById('location').value;
