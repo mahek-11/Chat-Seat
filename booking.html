@@ -9,14 +9,13 @@
     
     <style>
         body{
-            font-family:Arial, sans-serif;
-            background-color:#f8f9fa;
+            font-family:Tahoma, sans-serif;
+            background-color:#87CEEB;
         }
         .container {
-            background:rgba(255, 255, 255, 0.9);
+            background:#f0dad8;
             padding:30px;
             border-radius:10px;
-            box-shadow:0px 10px 20px rgba(0, 0, 0, 0.3);
             text-align:center;
             max-width:500px;
             margin: auto;
@@ -59,7 +58,7 @@
 <body>
     <div class="container">
         <h2> Book your Slot</h2>
-        <p> Please select place and time: </p>
+        <p>Select place and time to book your slot: </p>
 
         <form>
             <label for="location">Select Place:</label>
@@ -73,7 +72,7 @@
         </select>
         
        <label for="date"> Select Date: </label>
-        <input type="date" id="date" name="date" required>
+        <input type="date" id="date" name="date" required placeholder="YYYY-MM-DD">
 
         <label for="time"> Select Time:</label>
         <input type="time" id="time" min="09:00" max="16:00" step="3600" required>
