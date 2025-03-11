@@ -5,41 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Slot</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    
     <style>
         .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 500px;
+            background:rgba(255, 255, 255, 0.9);
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0px 10px 20px rgba(0, 0, 0, 0.3);
+            text-align:center;
+            max-width:500px;
             margin: auto;
-            margin-top: 50px;
+            margin-top:50px;
         }
         select, input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #333;
-            border-radius: 5px;
-            font-size: 1em;
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #333;
+            border-radius:5px;
+            font-size:1em;
         }
         button {
-            background: #c4a664;
-            cursor: pointer;
-            color: white;
-            font-weight: bold;
+            background:#FFF8DC;
+            cursor:pointer;
+            color:black;
+            font-weight:bold;
         }
-        button:hover {
-            background: black;
-        }
+       
         a {
-            display: inline-block;
-            margin-top: 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+            display:inline-block;
+            margin-top:15px;
+            text-decoration:none;
+            color:#333;
+            font-weight:bold;
         }
     </style>
 </head>
@@ -58,32 +60,42 @@
             <option value="Prospect_Library">Prospect Library</option>
         </select>
         
-        <label for="date"> Select Date: </label>
-        <input type="text" id="date" placeholder="Pick a date">
+        <label for="date">Select Date:</label>
+        <div class="input-group date" id="datepicker">
+        <input type="text" id="selected-date"class="form-control" placeholder="Select a date" readonly>
+        <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+        </div>
+    </div>
+
 
         <label for="time"> Select Time:</label>
         <input type="time" id="time" min="09:00" max="16:00" step="3600">
 
-            <button onclick="bookSlot()">Book Slot</button>
-            <br>
-            <a href="index.html">⬅ Back to Home</a>
+        <button onclick="bookSlot()">Book Slot</button>  
+        <br>
+        <a href="index.html">Back to Home</a>
+          
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
-        <script>
-            // Initialize Flatpickr Date Picker
-            flatpickr("#date", {
-                enableTime: false,
-                dateFormat: "Y-m-d",
-            });
+    <script>
+            $(document).ready(function() {
+            $("#datepicker").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: true
+        }).on("changeDate", function(e) {
+             $("#selected-date").val(e.format("yyyy-mm-dd"));
+        });
+    });
 
             function bookSlot() {
-                const location = document.getElementById('location').value;
-                const date = document.getElementById('date').value;
-                const time = document.getElementById('time').value;
+                let location = document.getElementById('location').value;
+                let selectDate = document.getElementById('selected-date').value;
+                let time = document.getElementById('time').value;
 
             if(!date || !time){
-                alert('Please select valid and date and time.');
+                alert('Please select valid date and time.');
                 return;
             }
 
