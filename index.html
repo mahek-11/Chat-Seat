@@ -30,9 +30,15 @@
         .button-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+            gap:15px;
+            margin-top:20px;
+            margin-width:800px;
 }
+    .btn-container a:nth-child(4),
+        .btn-container a:nth-child(5){
+        grid-column:span 2;
+        justify-self:center;
+        }
         
     .btn{
         font-size:1.5em;
